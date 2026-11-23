@@ -1,0 +1,14 @@
+{
+  "name": "ediya-portfolio-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "포트폴리오용 비공식 랜딩(이디야커피와 무관)",
+  "scripts": {
+    "test:unit": "node --test tests/calc.test.js",
+    "test:e2e": "playwright test",
+    "test": "npm run test:unit && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1"
+  }
+}

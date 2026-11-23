@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 비공식 포트폴리오 페이지: 검색 색인 금지(공식 페이지로 오인되는 것을 막는다) -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>동네 단골 카페 제안 — 포트폴리오용 비공식 랜딩</title>
+  <meta name="description" content="이디야커피를 소재로 한 개인 마케팅 포트폴리오의 비공식 제안 랜딩입니다. 이디야커피와 무관합니다.">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Google 동의 모드: 분석 쿠키는 동의 전 거부 상태
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+  </script>
+  <script src="config.js"></script>
+  <script src="lib/calc.js"></script>
+</head>
+<body>
+  <div class="disclaimer" role="note" data-testid="disclaimer-top">
+    포트폴리오용 비공식 제안 페이지입니다. 이디야커피(㈜이디야)와 관련이 없으며, 실제 혜택·가입·주문이 이루어지지 않습니다.
+  </div>
+
+  <header class="site-header">
+    <span class="wordmark">동네 단골 카페 제안서</span>
+    <a class="header-link" href="appendix/" data-testid="appendix-link">근거·출처 보기</a>
+  </header>
+
+  <main>
+    <!-- 1. 히어로 -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">마케팅 전략 제안 · 랜딩 시안</p>
+      <h1 id="hero-title">가까운 이디야를<br>내 단골로</h1>
+      <p class="lead">가입하고 7일 안에 두 번째로 오면 사이즈업.<br><small>(제안안 · 실제 판매 중인 혜택 아님)</small></p>
+      <a href="#store" class="btn btn-primary" data-cta="hero" data-testid="cta-hero">내 단골 매장 정하기</a>
+    </section>
+
+    <!-- 2. 문제 공감 -->
+    <section class="band" id="problem" aria-labelledby="problem-title">
+      <h2 id="problem-title">매일 마시는 커피, 고민은 늘 같다</h2>
+      <ul class="pain">
+        <li><strong>가격</strong> 커피전문점 이용자의 73.5%가 "비싸다"고 답했다<span class="src">한국소비자원 조사, 서울신문 2024-11-05</span></li>
+        <li><strong>거리</strong> 집·일터 가까운 곳에서 마시고 싶다</li>
+        <li><strong>보상</strong> 몇 번 가도 혜택이 멀게 느껴진다</li>
+      </ul>
+    </section>
+
+    <!-- 3. 해결·제품 -->
+    <section id="product" aria-labelledby="product-title">
+      <h2 id="product-title">가까이, 부담 없이, 단골일수록 가볍게</h2>
+      <div class="facts">
+        <div class="fact"><span class="num">2,420</span><span class="label">국내 운영 매장<br><small>2025년 말, 공정위 정보공개서</small></span></div>
+        <div class="fact"><span class="num">18oz</span><span class="label">커피 음료 기본 용량<br><small>공식 메뉴 표기 L 520ml</small></span></div>
+        <div class="fact"><span class="num">19종</span><span class="label">푸드 메뉴 개편<br><small>신규 13·리뉴얼 6, 2026-11-10</small></span></div>
+      </div>
+
+      <div class="card stamp" aria-labelledby="stamp-title">
+        <h3 id="stamp-title">내 스탬프로 첫 혜택까지 몇 잔?</h3>
+        <p class="muted">공개된 멤버십 안내 기준 계산기입니다(2026-11-23 확인). 12월 1일 등급 쿠폰팩 개편 내용은 배포 시점에 다시 확인합니다.</p>
+        <label for="stamp-input">지금까지 모은 스탬프</label>
+        <input id="stamp-input" type="number" min="0" max="200" value="0" inputmode="numeric" data-testid="stamp-input">
+        <output id="stamp-output" for="stamp-input" aria-live="polite" data-testid="stamp-output"></output>
+        <p class="note">현행 구조에서는 첫 쿠폰이 5잔째(WHITE 쿠폰팩), 첫 무료 아메리카노가 32잔째입니다. 이 제안은 그 사이 2~4번째 방문에 혜택을 두자는 것입니다.</p>
+      </div>
+    </section>
+
+    <!-- 4. 사회적 증거 -->
+    <section class="band" id="proof" aria-labelledby="proof-title">
+      <h2 id="proof-title">가까운 매장 후기는 지도에서 확인하세요</h2>
+      <div class="reviews">
+        <figure class="review mock"><span class="badge">예시</span><blockquote>"집 앞이라 퇴근길에 자주 들러요."</blockquote><figcaption>목업 후기 · 실제 고객 후기 아님</figcaption></figure>
+        <figure class="review mock"><span class="badge">예시</span><blockquote>"커피랑 간단한 빵 같이 먹기 좋아요."</blockquote><figcaption>목업 후기 · 실제 고객 후기 아님</figcaption></figure>
+      </div>
+      <p>IP 협업 음료는 2주 만에 15만 잔이 팔린 적이 있습니다<span class="src">포켓몬 협업, 한국경제 2026-04-10</span></p>
+      <div class="actions">
+        <a class="btn btn-ghost" href="https://map.naver.com/p/search/%EC%9D%B4%EB%94%94%EC%95%BC%EC%BB%A4%ED%94%BC" target="_blank" rel="noopener" data-testid="map-link">네이버 지도에서 가까운 매장 보기</a>
+        <button type="button" class="btn btn-ghost" data-campaign="ip_collab_demo" data-testid="join-campaign">협업 응모 조건 체험(시뮬레이션)</button>
+      </div>
+    </section>
+
+    <!-- 5. FAQ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">자주 묻는 질문</h2>
+      <details>
+        <summary>아메리카노 가격은 얼마인가요?</summary>
+        <p>매장 기본 사이즈 기준 3,200원입니다(2026-04 보도 기준). 기본 음료 용량은 18oz(공식 메뉴 표기 L 520ml)이며, 커피는 2022년 12월, 논커피는 2025년 12월에 18oz로 맞춰졌습니다. 아메리카노 용량은 공식 메뉴에 표시되어 있지 않아 적지 않았습니다.</p>
+      </details>
+      <details>
+        <summary>매장은 몇 개인가요?</summary>
+        <p>2025년 말 기준 국내 운영 매장은 2,420개(가맹 2,405, 직영 15)입니다(공정위 가맹사업 정보공개서). '4,000호점'은 누적 개점 번호라 운영 매장 수와 다릅니다. 2026년 수치는 공식 자료가 나오면 갱신합니다.</p>
+      </details>
+      <details>
+        <summary>스탬프는 몇 개 모으면 무엇을 받나요?</summary>
+        <p>매장 제조 음료 1잔에 스탬프 1개가 쌓입니다. 5개면 WHITE 등급 쿠폰팩(최초 1회), 20개면 BLUE 등급이 되고 승급에 쓴 스탬프는 소멸합니다. BLUE 이후 모은 스탬프 3개로 800원 할인, 12개로 아메리카노(L) 1잔을 받습니다(이디야멤버스 멤버십 안내, 2026-11-23 확인).</p>
+      </details>
+    </section>
+
+    <!-- 6. 오퍼 -->
+    <section class="band offer" id="offer" aria-labelledby="offer-title">
+      <h2 id="offer-title">제안하는 첫 혜택</h2>
+      <div class="card" data-promo-id="welcome_2nd_visit" data-testid="offer-card">
+        <span class="badge">제안안</span>
+        <h3>가입 후 7일 안에 두 번째 방문 → 사이즈업</h3>
+        <ul class="terms">
+          <li>대상: 신규 가입 회원(무작위 50%에게만 제공하는 A/B 실험 설계)</li>
+          <li>조건: 가입 후 7일 안, 서로 다른 날의 두 번째 결제</li>
+          <li>비용: 본사 부담(점주 비용 분담 없음)</li>
+          <li>판정: 7일 내 2회차율이 대조군보다 3%p 이상 높고, 증분 이익이 0보다 클 때만 채택</li>
+        </ul>
+        <button type="button" class="btn btn-primary" data-testid="select-promo">이 혜택 설계 자세히 보기</button>
+      </div>
+      <div class="card" aria-labelledby="order-title">
+        <h3 id="order-title">앱 첫 주문 흐름 체험(시뮬레이션)</h3>
+        <p class="muted">결제가 일어나지 않습니다. 측정 이벤트 시연용입니다.</p>
+        <button type="button" class="btn btn-ghost" data-testid="begin-checkout">아메리카노 담기(3,200원)</button>
+        <button type="button" class="btn btn-ghost" data-testid="purchase" disabled>주문 완료 체험</button>
+        <output id="order-output" aria-live="polite" data-testid="order-output"></output>
+      </div>
+    </section>
+
+    <!-- 7. 최종 CTA: 단골 매장 정하기(가입 시뮬레이션) -->
+    <section id="store" aria-labelledby="store-title">
+      <h2 id="store-title">내 단골 매장 정하기</h2>
+      <p class="muted">가입 시뮬레이션입니다. 이름·연락처 등 개인정보를 받지 않으며, 입력값은 이 브라우저 밖으로 저장되지 않습니다.</p>
+      <form id="signup-form" data-testid="signup-form" novalidate>
+        <label for="area">동네(예시 매장)</label>
+        <select id="area" name="area" required data-testid="area-select">
+          <option value="">선택하세요</option>
+          <option value="demo_haeundae">부산 해운대구 예시 매장</option>
+          <option value="demo_busanjin">부산 부산진구 예시 매장</option>
+          <option value="demo_suyeong">부산 수영구 예시 매장</option>
+          <option value="demo_dongnae">부산 동래구 예시 매장</option>
+        </select>
+        <fieldset>
+          <legend>알림 수신 동의(시뮬레이션)</legend>
+          <label><input type="checkbox" name="consent_ad" data-testid="consent-ad"> (선택) 광고성 정보 수신 · 08:00~20:50 발송</label>
+          <label><input type="checkbox" name="consent_night" data-testid="consent-night"> (선택) 야간(21:00~08:00) 광고성 정보 수신</label>
+        </fieldset>
+        <button type="submit" class="btn btn-primary" data-cta="bottom" data-testid="cta-bottom">내 단골 매장 정하기</button>
+        <output id="signup-output" aria-live="polite" data-testid="signup-output"></output>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-testid="disclaimer-bottom">포트폴리오용 비공식 제안 페이지입니다. 이디야커피(㈜이디야)와 관련이 없고, 로고·공식 이미지를 쓰지 않았습니다. 표시된 수치는 출처와 기준일을 함께 적었습니다.</p>
+    <p><a href="appendix/">근거·출처·전략 요약 보기</a> · <a href="#" id="consent-reopen">쿠키 설정</a></p>
+  </footer>
+
+  <div class="consent" id="consent" role="dialog" aria-labelledby="consent-title" hidden data-testid="consent-banner">
+    <p id="consent-title"><strong>분석 쿠키 사용 동의</strong></p>
+    <p>이 페이지는 포트폴리오 측정 시연을 위해 Google 애널리틱스를 쓸 수 있습니다. 동의하지 않아도 이용에 제한이 없습니다.</p>
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="consent-accept" data-testid="consent-accept">동의</button>
+      <button type="button" class="btn btn-ghost" id="consent-reject" data-testid="consent-reject">거부</button>
+    </div>
+  </div>
+
+  <aside class="debug" id="debug" hidden aria-label="측정 디버그 패널"><strong>dataLayer</strong><pre id="debug-log" data-testid="debug-log"></pre></aside>
+
+  <script src="app.js"></script>
+</body>
+</html>

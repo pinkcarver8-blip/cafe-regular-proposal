@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>근거와 설계 — 포트폴리오 부록(비공식)</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    main section { padding-top: 32px; padding-bottom: 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; background: var(--surface); }
+    th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: var(--band); }
+    .scroll { overflow-x: auto; }
+    pre.code { background: #1e1e1e; color: #e6e6e6; padding: 14px; border-radius: 10px; overflow-x: auto; font-size: .82rem; }
+  </style>
+</head>
+<body>
+  <div class="disclaimer" role="note">포트폴리오용 비공식 부록입니다. 이디야커피(㈜이디야)와 관련이 없습니다.</div>
+  <header class="site-header"><span class="wordmark">부록: 근거와 설계</span><a class="header-link" href="../">랜딩으로</a></header>
+  <main>
+    <section id="summary">
+      <h1>전략 요약</h1>
+      <p><strong>진단(가설):</strong> 2024년 조사에서 최근 1개월 이용률은 31.6%, 주 이용 비율은 3.9%였다(오픈서베이, 15~59세 2,000명). 둘 다 같은 시점 설문 비율이라 재방문율 자체는 아니지만, '써 본 사람이 단골로 남지 않는다'는 가설이 근거가 가장 많다. 경쟁 가설(떠오르지 않음, 가격·제품 이탈)과 함께 회원·POS 데이터로 검증한다.</p>
+      <p><strong>핵심 장벽:</strong> 현행 멤버십에서 첫 쿠폰은 5잔째(WHITE 쿠폰팩), 첫 무료 아메리카노는 32잔째다(계산, 이디야멤버스 공개 안내 2026-11-23). 습관이 생기는 2~4번째 방문에 보상이 비어 있다.</p>
+      <p><strong>제안:</strong> 가입 직후 두 번째 방문에 첫 보상을 두고, 효과는 무작위 A/B와 홀드아웃으로 증분만 잰다. 북극성은 '30일 내 유효 방문일 N일 이상 앱 회원 수'(N 출발값 4, 실측으로 확정)다.</p>
+    </section>
+
+    <section id="offer" class="band">
+      <h2>제안 혜택 실험 설계(H1a)</h2>
+      <div class="scroll"><table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>바꿀 것</td><td>신규 가입자 웰컴 여정의 2회차 혜택만 바꾼다(7일 유효 사이즈업). 다른 메시지는 두 군에 똑같이 보낸다</td></tr>
+        <tr><td>설계</td><td>신규 가입자 무작위 50:50. 비용은 본사 부담. CRM 전체에 5% 장기 홀드아웃</td></tr>
+        <tr><td>판정 기준</td><td>7일 내 2회차율이 대조군보다 3%p 이상 높고 유의하며, 증분 이익이 0보다 클 때</td></tr>
+        <tr><td>표본</td><td>기준선 20% 가정, 3%p, 유의수준 5%, 검정력 80% → 군당 약 2,943명(계산). 4주 모집이면 하루 약 210명</td></tr>
+        <tr><td>증분 이익</td><td>(처리군 재방문 − 대조군 기대 재방문) × 방문당 공헌이익 − 혜택 사용 건수 전체 × 혜택 단가 − 운영비</td></tr>
+        <tr><td>이후</td><td>H1b(2~4회차 소액 할인), H1c(첫 리워드 시점 앞당기기)는 순서대로 별도 실험</td></tr>
+      </table></div>
+    </section>
+
+    <section id="measure">
+      <h2>측정 설계</h2>
+      <h3>이벤트</h3>
+      <div class="scroll"><table>
+        <tr><th>이벤트</th><th>언제</th><th>매개변수</th></tr>
+        <tr><td>click_cta (맞춤)</td><td>히어로·하단 CTA</td><td>cta_location</td></tr>
+        <tr><td>view_promotion / select_promotion</td><td>제안 혜택 노출·클릭</td><td>items(promotion_id 포함)</td></tr>
+        <tr><td>join_campaign (맞춤)</td><td>협업 응모 시뮬레이션</td><td>campaign_id, valid_visit_days</td></tr>
+        <tr><td>begin_checkout / purchase</td><td>주문 시뮬레이션</td><td>transaction_id, value, currency=KRW, items</td></tr>
+        <tr><td>sign_up</td><td>가입 시뮬레이션</td><td>method=simulation</td></tr>
+        <tr><td>marketing_consent (맞춤)</td><td>수신 동의</td><td>ad_consent, night_consent</td></tr>
+        <tr><td>set_favorite_store (맞춤)</td><td>단골 매장 선택</td><td>store_id(예시 매장), store_type</td></tr>
+      </table></div>
+      <h3>UTM 규칙</h3>
+      <div class="scroll"><table>
+        <tr><th>경로</th><th>source / medium</th><th>예상 기본 채널(실측 전)</th></tr>
+        <tr><td>네이버 플레이스 링크</td><td>naver_place / referral</td><td>Referral</td></tr>
+        <tr><td>네이버 블로그</td><td>naver_blog / social</td><td>Organic Social</td></tr>
+        <tr><td>인스타그램 협업 광고</td><td>instagram / paid_social</td><td>Paid Social</td></tr>
+        <tr><td>매장 POP QR</td><td>store_qr / qr</td><td>사용자 지정 채널 'Offline QR'</td></tr>
+        <tr><td>카카오 브랜드메시지</td><td>kakao_brandmsg / crm</td><td>사용자 지정 채널 'CRM'</td></tr>
+        <tr><td>앱푸시</td><td>ediya_app / push</td><td>Mobile Push Notifications</td></tr>
+      </table></div>
+      <p class="note">`kakao`는 GA4 소스 목록에서 소셜로 분류되므로 CRM 소스로 쓰지 않는다(GA4 기본 채널 그룹 문서·소스 목록, 2026-11-24 확인).</p>
+    </section>
+
+    <section id="schema" class="band">
+      <h2>공식 사이트 적용 제안: 구조화 데이터 예시</h2>
+      <p>이 비공식 페이지에는 이디야를 대표하는 구조화 데이터를 넣지 않았다(출처 혼동 방지). 아래는 공식 사이트에 적용하자고 제안하는 예시이며, Schema Markup Validator로 검증한다. FAQ 리치 결과는 2026-05-07에 종료됐으므로 목적은 '기계가 사실을 정확히 읽게 하기'다.</p>
+<pre class="code">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "이디야커피 매장은 몇 개인가요?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "2025년 말 기준 국내 운영 매장은 2,420개(가맹 2,405, 직영 15)입니다. '4,000호점'은 누적 개점 번호입니다."
+    }
+  }]
+}</pre>
+    </section>
+
+    <section id="principles">
+      <h2>작성 원칙</h2>
+      <ul>
+        <li>수치는 출처·기준일과 함께 쓴다. 공개 자료, 실측, 가상 데이터를 구분해 표시한다.</li>
+        <li>로고·공식 이미지·실매장 리뷰를 쓰지 않는다. 가입·주문은 시뮬레이션이며 개인정보를 받지 않는다.</li>
+        <li>판매 여부를 확인하지 못한 혜택(블루패스)은 현재 혜택처럼 쓰지 않는다.</li>
+        <li>AI 도구로 조사·작성을 보조했고, 외부 검토(Codex·ChatGPT) 지적은 원문과 대조해 수용·반박했다.</li>
+      </ul>
+    </section>
+
+    <section id="sources" class="band">
+      <h2>주요 출처</h2>
+      <ul>
+        <li><a href="https://franchise.ftc.go.kr/mnu/program/userRqst/compareView.do?firMstSn=82594" rel="noopener">공정거래위원회 가맹사업거래 비교정보(이디야), 최종등록 2026-11-12</a></li>
+        <li><a href="https://blog.opensurvey.co.kr/article/cafe-2024-2/" rel="noopener">오픈서베이 카페 트렌드 2024</a></li>
+        <li><a href="https://members.ediya.com/guide/membership" rel="noopener">이디야멤버스 멤버십 안내</a></li>
+        <li><a href="https://www.asiae.co.kr/en/article/2026031514244412977" rel="noopener">아시아경제 영문 2026-03-15(NH농협카드 연령별 카페 결제)</a></li>
+        <li><a href="https://support.google.com/analytics/answer/9756891?hl=en" rel="noopener">GA4 기본 채널 그룹</a></li>
+        <li><a href="https://www.kisa.or.kr/401/form?lang_type=KO&amp;page=&amp;postSeq=3608" rel="noopener">KISA 불법스팸 방지 안내서 7차(2025-12)</a></li>
+      </ul>
+      <p class="note">전체 출처(전략서 193개, 원인 진단 190개, 취업 조사 283~286건)는 포트폴리오 PDF 부록에 정리한다.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><p>포트폴리오용 비공식 부록입니다. 이디야커피와 관련이 없습니다.</p></footer>
+</body>
+</html>
