@@ -5,6 +5,8 @@ const events = (page) => page.evaluate(() => window.dataLayer.filter((e) => e.ev
 
 test.beforeEach(async ({ page }) => {
   page.on('pageerror', (err) => { throw err; });
+  // 테스트 방문이 실제 GA4로 가지 않게 외부 태그 요청을 막는다
+  await page.route(/googletagmanager\.com|google-analytics\.com/, (route) => route.abort());
   await page.goto('/index.html');
 });
 

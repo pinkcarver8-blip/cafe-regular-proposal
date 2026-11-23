@@ -11,10 +11,26 @@
   const debugBox = document.getElementById('debug');
   const debugLog = document.getElementById('debug-log');
 
+  // GA4 직접 연결(gtag). 동의 모드 기본값은 index.html <head>에서 denied로 설정됨.
+  if (cfg.measurementId && !cfg.gtmId) {
+    const g = document.createElement('script');
+    g.async = true;
+    g.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(cfg.measurementId);
+    document.head.appendChild(g);
+    gtag('js', new Date());
+    gtag('config', cfg.measurementId, debug ? { debug_mode: true } : {});
+  }
+
   function track(event, data) {
     const payload = Object.assign({ event }, data || {});
     if (payload.ecommerce) dl.push({ ecommerce: null }); // GA4 권장: 이전 ecommerce 객체 초기화
     dl.push(payload);
+    if (cfg.measurementId && !cfg.gtmId && event !== 'consent_update') {
+      const params = Object.assign({}, data || {});
+      if (params.ecommerce) { Object.assign(params, params.ecommerce); delete params.ecommerce; }
+      if (debug) params.debug_mode = true;
+      gtag('event', event, params);
+    }
     if (debug) {
       debugBox.hidden = false;
       debugLog.textContent = JSON.stringify(payload) + '\n' + debugLog.textContent;
