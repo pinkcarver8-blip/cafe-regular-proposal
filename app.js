@@ -11,6 +11,11 @@
   const debugBox = document.getElementById('debug');
   const debugLog = document.getElementById('debug-log');
 
+  // 이전 방문에서 저장한 동의를 GA 설정보다 먼저 반영한다(첫 page_view가 거부 상태로 나가지 않게)
+  try {
+    if (localStorage.getItem('landing_consent_v1') === 'granted') gtag('consent', 'update', { analytics_storage: 'granted' });
+  } catch (e) { /* 저장소 접근 불가 */ }
+
   // GA4 직접 연결(gtag). 동의 모드 기본값은 index.html <head>에서 denied로 설정됨.
   if (cfg.measurementId && !cfg.gtmId) {
     const g = document.createElement('script');
